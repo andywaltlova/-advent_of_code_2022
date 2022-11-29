@@ -32,3 +32,5 @@ Input data are downloaded via python module [`aocd`](https://github.com/wimglenn
 
 ---
 https://adventofcode.com/2022
+
+![python or go](https://miro.medium.com/max/1200/0*YbWvR4EKfSzQfnai.png)
