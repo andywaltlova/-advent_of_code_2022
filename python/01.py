@@ -28,3 +28,10 @@ if __name__ == "__main__":
 
     # Second-part
     print(part_two(data))
+
+
+    # Shorter alternative
+    elfs = [sum(map(int,elf.strip(',').split(','))) for elf in open('data/01.txt').read().replace('\n',',').split(',,')]
+    part1 = max(elfs)
+    part2 = sum(sorted(elfs, reverse=True)[:3])
+    print(part1, part2)
