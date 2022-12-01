@@ -1,11 +1,22 @@
 from utils import get_input
 
 
+def get_elfs(data):
+    elfs = []
+    elf = 0
+    for calories in data:
+        if calories != '':
+            elf += int(calories)
+        else:
+            elfs.append(elf)
+            elf = 0
+    return elfs
+
 def part_one(data):
-    pass
+    return max(get_elfs(data))
 
 def part_two(data):
-    pass
+    return sum(sorted(get_elfs(data), reverse=True)[:3])
 
 
 if __name__ == "__main__":
