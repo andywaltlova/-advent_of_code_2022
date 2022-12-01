@@ -25,6 +25,15 @@ func arrayMax(s []int) int {
 	return m
 }
 
+
+func arraySum(array []int) int {
+	result := 0
+	for _, v := range array {
+	 result += v
+	}
+	return result
+}
+
 func min(x, y int) int {
 	if x > y {
 		return y

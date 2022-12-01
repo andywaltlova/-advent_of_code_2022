@@ -5,16 +5,33 @@ package main
 
 import (
 	"fmt"
-	// "strconv"
-	// "strings"
+	"strconv"
+	"sort"
 )
 
+func getElfs(input_strings []string) []int {
+	var elfs []int
+	var elf int = 0
+	for _, s := range input_strings {
+		num, err := strconv.Atoi(s)
+		if err == nil {
+			elf += num
+		} else {
+			elfs = append(elfs, elf)
+			elf = 0
+		}
+	}
+	return elfs
+}
+
 func part_one(input_strings []string) int {
-	return 0
+	return arrayMax(getElfs(input_strings))
 }
 
 func part_two(input_strings []string) int {
-	return 0
+	var elfs []int = getElfs(input_strings)
+	sort.Ints(elfs)
+	return arraySum(elfs[len(elfs)-3:])
 }
 
 func main() {
