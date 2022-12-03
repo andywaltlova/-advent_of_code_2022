@@ -1,4 +1,4 @@
-from .utils import get_input
+from utils import get_input
 
 
 def part_one(data):
