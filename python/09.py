@@ -90,9 +90,25 @@ def part_one(data):
             positions.add((tail['x'], tail['y']))
     return len(positions)
 
-def part_two(data):
-    # please no ..
-    pass
+def complex_numbers_solution(data):
+    # Inspired by reddit solutions - I couldn't come up with this on my own :(
+    rope = [0] * 10
+    seen_knot_positions = [set([knot]) for knot in rope]
+    directions = {'L':+1, 'R':-1, 'D':1j, 'U':-1j}
+    sign = lambda x: complex((x.real>0) - (x.real<0), (x.imag>0) - (x.imag<0))
+
+    for line in data:
+        direction, distance = line.split(' ')
+        for _ in range(int(distance)):
+            rope[0] += directions[direction]
+
+            for knot in range(1, 10):
+                dist = rope[knot-1] - rope[knot]
+                if abs(dist) >= 2:
+                    rope[knot] += sign(dist)
+                    seen_knot_positions[knot].add(rope[knot])
+
+    return len(seen_knot_positions[1]), len(seen_knot_positions[9])
 
 
 if __name__ == "__main__":
@@ -102,5 +118,5 @@ if __name__ == "__main__":
     # First-part
     print(part_one(data))
 
-    # Second-part
-    print(part_two(data))
+    # Complex firs and second part
+    print(complex_numbers_solution(data))
